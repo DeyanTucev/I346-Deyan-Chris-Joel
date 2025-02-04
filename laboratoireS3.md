@@ -10,7 +10,10 @@
 * [Gestion des profiles](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html#cli-configure-files-format-profile)
   * Vous devez créer un profile du nom de votre équipe et l'utiliser pour toute les futures commandes
   ```
-  aws s3 <la commande> --profile devopsteam<xx>
+  aws configure 
+  AWS Access Key ID [None]: key
+  AWS Secret Access Key [None]: key2
+  Default region name [None]: eu-central-1
   ```
 
 ## IAM Policy
