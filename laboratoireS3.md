@@ -137,12 +137,13 @@ upload: U:\test.txt to s3://devopsteam03-i346/test.txt
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
-//TODO
+ aws s3 cp --recursive U:\dossierTest s3://devopsteam03-i346 --profile devopsteam03
 ```
-
+l'output était vide, donc pour vérifier que le dossier avait bien été créé j'ai upload un fichier dedans avec cette commande :
+aws s3 cp U:\test.txt s3://devopsteam03-i346/dossierTest --profile devopsteam03
 ```
 [OUTPUT]
-//TODO
+upload: U:\test.txt to s3://devopsteam03-i346/dossierTest
 ```
 
 ### Lister le contenu d'un "repertoire"
