@@ -55,7 +55,7 @@ Attention:
 * Le bucket existe-t-il ?
 
 ```bash
-aws s3 ls --profile devopsteam99-i346 | grep "devopsteam*"
+aws s3 ls --profile devopsteam03-i346 | grep "devopsteam*"
 ```
 
 ```
@@ -94,23 +94,26 @@ make_bucket: devopsteam99-i346
 * [Vérifier l'état du bucket avant votre commande]
 
 ```bash
-//TODO
+aws s3 ls s3://devopsteam03-i346 --profile devopsteam03
 ```
 
 ```
 [OUTPUT]
-//TODO
+An error occurred (AccessDenied) when calling the ListObjectsV2 operation: User: arn:aws:iam::709024702237:user/devopsteam03-i346 is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::devopsteam03-i346" because no identity-based policy allows the s3:ListBucket action
+
 ```
 
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
-//TODO
+aws s3 cp U:\test.txt s3://devopsteam03-i346 --profile devopsteam03
+
 ```
 
 ```
 [OUTPUT]
-//TODO
+upload: U:\test.txt to s3://devopsteam03-i346/test.txt
+
 ```
 
 ### Uploader un répertoire
