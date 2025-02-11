@@ -299,7 +299,8 @@ aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
-//TODO
+aws s3api delete-object --bucket devopsteam03-i346 --key test.txt --profile devopsteam03
+
 ```
 
 ```
@@ -327,12 +328,13 @@ aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
-//TODO
+
+
 ```
 
 ```
 [OUTPUT]
-//TODO
+
 ```
 
 ### Extraire uniquement les metadonnées d'un objet
