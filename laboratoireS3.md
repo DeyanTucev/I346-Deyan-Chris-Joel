@@ -338,13 +338,10 @@ aws s3api delete-object --bucket devopsteam03-i346 --key test.txt --profile devo
 
 ```bash
  aws s3 rm s3://devopsteam03-i346/dossierTest --profile devopsteam03
-
-
 ```
 
 ```
 delete: s3://devopsteam03-i346/dossierTest
-
 ```
 
 ### Extraire uniquement les metadonnées d'un objet
@@ -356,23 +353,41 @@ delete: s3://devopsteam03-i346/dossierTest
 * [Vérifier l'état du bucket avant votre commande]
 
 ```bash
-//TODO
+aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --profile devopsteam03
 ```
 
 ```
 [OUTPUT]
-//TODO
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-02-05T10:40:53+00:00",
+    "ContentLength": 0,
+    "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+    "ChecksumCRC64NVME": "AAAAAAAAAAA=",
+    "ChecksumType": "FULL_OBJECT",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
 ```
 
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
-aws s3 rm s3://devopsteam03-i346 --recursive --profile devopsteam03
+aws s3api head-object --bucket devopsteam03-i346 --key test.txt --profile devopsteam03
 ```
 
 ```
 [OUTPUT]
-//TODO
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-02-11T13:43:48+00:00",
+    "ContentLength": 0,
+    "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
 ```
 
 ### Vider le bucket
@@ -395,7 +410,7 @@ aws s3 rm s3://devopsteam03-i346 --recursive --profile devopsteam03
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
-//TODO
+aws s3 rm s3://devopsteam03-i346 --recursive --profile devopsteam03
 ```
 
 ```
