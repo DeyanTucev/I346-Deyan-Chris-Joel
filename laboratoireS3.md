@@ -168,12 +168,22 @@ upload: U:\test.txt to s3://devopsteam03-i346/dossierTest
 * [Vérifier l'état du bucket avant votre commande]
 
 ```bash
-//TODO
+aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --profile devopsteam03
 ```
 
 ```
 [OUTPUT]
-//TODO
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-02-05T10:40:53+00:00",
+    "ContentLength": 0,
+    "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+    "ChecksumCRC64NVME": "AAAAAAAAAAA=",
+    "ChecksumType": "FULL_OBJECT",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
 ```
 
 * [La commande à réaliser pour effecuter l'action demandée]
