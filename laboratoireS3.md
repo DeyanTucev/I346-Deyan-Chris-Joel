@@ -34,7 +34,7 @@ Voici la "policy" qui vous a été attribuée:
             "Action": [
                 "s3:PutObject",
                 "s3:GetObject",
-                "s3:DeleteObject",
+                "s3:DeleteObject"
             ],
             "Resource": "arn:aws:s3:::devopsteam03-i346/*" 
         }
@@ -337,12 +337,13 @@ aws s3api delete-object --bucket devopsteam03-i346 --key test.txt --profile devo
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
+ aws s3 rm s3://devopsteam03-i346/dossierTest --profile devopsteam03
 
 
 ```
 
 ```
-[OUTPUT]
+delete: s3://devopsteam03-i346/dossierTest
 
 ```
 
