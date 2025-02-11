@@ -271,12 +271,12 @@ aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
-//TODO
+aws s3 presign s3://devopsteam03-i346/dossierTest/test.txt --profile devopsteam03 --region eu-central-1
 ```
 
 ```
 [OUTPUT]
-//TODO
+https://devopsteam03-i346.s3.eu-central-1.amazonaws.com/dossierTest/test.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=%16AKIA2KFJKL4O67JA2JWO%2F20250211%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20250211T124859Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6e01462de7b8760a9cd039d7f8a9093dccfad35078881385cb9f21c9bfa8602a
 ```
 
 ### Supprimer un fichier
@@ -288,19 +288,28 @@ aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --
 * [Vérifier l'état du bucket avant votre commande]
 
 ```bash
-//TODO
+aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --profile devopsteam03
 ```
 
 ```
 [OUTPUT]
-//TODO
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-02-05T10:40:53+00:00",
+    "ContentLength": 0,
+    "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+    "ChecksumCRC64NVME": "AAAAAAAAAAA=",
+    "ChecksumType": "FULL_OBJECT",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
 ```
 
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
 aws s3api delete-object --bucket devopsteam03-i346 --key test.txt --profile devopsteam03
-
 ```
 
 ```
