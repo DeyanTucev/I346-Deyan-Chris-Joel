@@ -367,7 +367,7 @@ delete: s3://devopsteam03-i346/dossierTest
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
-//TODO
+aws s3 rm s3://devopsteam03-i346 --recursive --profile devopsteam03
 ```
 
 ```
