@@ -415,7 +415,7 @@ aws s3 rm s3://devopsteam03-i346 --recursive --profile devopsteam03
 
 ```
 [OUTPUT]
-//TODO
+fatal error: An error occurred (AccessDenied) when calling the ListObjectsV2 operation: User: arn:aws:iam::709024702237:user/devopsteam03-i346 is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::devopsteam03-i346" because no identity-based policy allows the s3:ListBucket action
 ```
 
 ---
