@@ -89,7 +89,7 @@ make_bucket: devopsteam99-i346
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - Example cp](https://docs.aws.amazon.com/cli/latest/userguide/cli_s3_code_examples.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
@@ -99,35 +99,33 @@ aws s3 ls s3://devopsteam03-i346 --profile devopsteam03
 
 ```
 [OUTPUT]
-An error occurred (AccessDenied) when calling the ListObjectsV2 operation: User: arn:aws:iam::709024702237:user/devopsteam03-i346 
-is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::devopsteam03-i346" because no identity-based policy allows the s3:ListBucket action
-
+An error occurred (AccessDenied) when calling the ListObjectsV2 operation:
+User: arn:aws:iam::709024702237:user/devopsteam03-i346 
+is not authorized to perform: s3:ListBucket on resource:
+"arn:aws:s3:::devopsteam03-i346" because no identity-based policy allows the s3:ListBucket action
 ```
 
 * [La commande à réaliser pour effecuter l'action demandée]
 
 ```bash
 aws s3 cp U:\test.txt s3://devopsteam03-i346 --profile devopsteam03
-
 ```
 
 ```
 [OUTPUT]
 upload: U:\test.txt to s3://devopsteam03-i346/test.txt
-
 ```
 
 ### Uploader un répertoire
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - Example cp](https://docs.aws.amazon.com/cli/latest/userguide/cli_s3_code_examples.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
 ```bash
 aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --profile devopsteam03
-
 ```
 
 ```
@@ -143,8 +141,6 @@ aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --
     "ServerSideEncryption": "AES256",
     "Metadata": {}
 }
-
-
 ```
 
 * [La commande à réaliser pour effecuter l'action demandée]
@@ -163,7 +159,7 @@ upload: U:\test.txt to s3://devopsteam03-i346/dossierTest
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - Get-Object](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3api/get-object.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
@@ -190,7 +186,6 @@ aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --
 
 ```bash
 aws s3api get-object --bucket devopsteam03-i346 --key s3://devopsteam03-i346/dossierTest dossierTest --profile devopsteam03
-
 ```
 
 ```
@@ -204,7 +199,7 @@ identity-based policy allows the s3:ListBucket action
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - Sync](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/sync.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
@@ -238,14 +233,13 @@ aws s3 sync U:/dossierTest s3://devopsteam03-i346 --profile devopsteam03
 fatal error: An error occurred (AccessDenied) when calling the ListObjectsV2 operation: 
 User: arn:aws:iam::709024702237:user/devopsteam03-i346 is not authorized to perform: s3:ListBucket on 
 resource: "arn:aws:s3:::devopsteam03-i346" because no identity-based policy allows the s3:ListBucket action
-
 ```
 
 ### Publier un fichier présent sur un bucket en générant un lien (url) temporaire
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - Presign](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/presign.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
@@ -283,7 +277,7 @@ https://devopsteam03-i346.s3.eu-central-1.amazonaws.com/dossierTest/test.txt?X-A
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - Delete-Object](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3api/delete-object.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
@@ -321,17 +315,28 @@ aws s3api delete-object --bucket devopsteam03-i346 --key test.txt --profile devo
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - rm](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rm.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
 ```bash
-//TODO
+[OUTPUT]
+aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --profile devopsteam03
 ```
 
 ```
 [OUTPUT]
-//TODO
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-02-05T10:40:53+00:00",
+    "ContentLength": 0,
+    "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+    "ChecksumCRC64NVME": "AAAAAAAAAAA=",
+    "ChecksumType": "FULL_OBJECT",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
 ```
 
 * [La commande à réaliser pour effecuter l'action demandée]
@@ -348,7 +353,7 @@ delete: s3://devopsteam03-i346/dossierTest
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - Head-Object](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3api/head-object.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
@@ -394,17 +399,27 @@ aws s3api head-object --bucket devopsteam03-i346 --key test.txt --profile devops
 
 //TODO en suivant le modèle livré sous "Créer un bucket"
 
-* [AWS Official Doc - Create Bucket](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [AWS Official Doc - rm](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/rm.html)
 
 * [Vérifier l'état du bucket avant votre commande]
 
 ```bash
-//TODO
+aws s3api get-object --bucket devopsteam03-i346 --key dossierTest dossierTest --profile devopsteam03
 ```
 
 ```
 [OUTPUT]
-//TODO
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-02-05T10:40:53+00:00",
+    "ContentLength": 0,
+    "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+    "ChecksumCRC64NVME": "AAAAAAAAAAA=",
+    "ChecksumType": "FULL_OBJECT",
+    "ContentType": "text/plain",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
 ```
 
 * [La commande à réaliser pour effecuter l'action demandée]
