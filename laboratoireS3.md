@@ -270,7 +270,10 @@ aws s3 presign s3://devopsteam03-i346/dossierTest/test.txt --profile devopsteam0
 
 ```
 [OUTPUT]
-https://devopsteam03-i346.s3.eu-central-1.amazonaws.com/dossierTest/test.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=%16AKIA2KFJKL4O67JA2JWO%2F20250211%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20250211T124859Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6e01462de7b8760a9cd039d7f8a9093dccfad35078881385cb9f21c9bfa8602a
+https://devopsteam03-i346.s3.eu-central-1.amazonaws.com/dossierTest/test.txt?X-Amz-Algorithm=AWS4-
+HMAC-SHA256&X-Amz-Credential=%16AKIA2KFJKL4O67JA2JWO%2F20250211%2Feu-central-1%2Fs3%2Faws4_request&X-
+Amz-Date=20250211T124859Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-
+Signature=6e01462de7b8760a9cd039d7f8a9093dccfad35078881385cb9f21c9bfa8602a
 ```
 
 ### Supprimer un fichier
@@ -430,7 +433,11 @@ aws s3 rm s3://devopsteam03-i346 --recursive --profile devopsteam03
 
 ```
 [OUTPUT]
-fatal error: An error occurred (AccessDenied) when calling the ListObjectsV2 operation: User: arn:aws:iam::709024702237:user/devopsteam03-i346 is not authorized to perform: s3:ListBucket on resource: "arn:aws:s3:::devopsteam03-i346" because no identity-based policy allows the s3:ListBucket action
+fatal error: An error occurred (AccessDenied) when calling the
+ListObjectsV2 operation: User: arn:aws:iam::709024702237:user/devopsteam03-i346
+is not authorized to perform: s3:ListBucket on resource:
+"arn:aws:s3:::devopsteam03-i346" because no identity-based policy allows
+the s3:ListBucket action
 ```
 
 ---
