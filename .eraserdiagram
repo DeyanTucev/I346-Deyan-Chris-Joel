@@ -1,0 +1,30 @@
+cloud-architecture-diagram
+
+// Define groups and nodes
+User [icon: user]
+Net [icon: internet-explorer]
+IGW [icon: aws-internet-gateway]
+
+VPC [icon: aws-vpc] {
+  Public Server {
+    Server SSH [icon: aws-ec2]
+    Nat [icon: aws-nat-gateway]
+  }
+
+  RTF Table [icon: aws-auto-scaling]
+
+  Private Server [color: red] {
+    Win [icon: aws-ec2]
+    Lin [icon: aws-ec2]
+  }
+}
+
+// Define connections
+IGW > Server SSH
+Server SSH > RTF Table
+RTF Table > Win, Lin
+IGW < Nat < RTF Table
+RTF Table < Win, Lin
+Net > IGW
+Net < IGW
+User > IGW
