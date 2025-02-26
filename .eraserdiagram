@@ -1,19 +1,19 @@
 cloud-architecture-diagram
 
 // Define groups and nodes
-User [icon: user]
-Net [icon: internet-explorer]
+User [icon: aws-end-user-computing]
+Net [icon: aws-cloudwatch]
 IGW [icon: aws-internet-gateway]
 
 VPC [icon: aws-vpc] {
-  Public Server {
+  Public Subnet {
     Server SSH [icon: aws-ec2]
     Nat [icon: aws-nat-gateway]
   }
 
   RTF Table [icon: aws-auto-scaling]
 
-  Private Server [color: red] {
+  Private Subnet [color: red] {
     Win [icon: aws-ec2]
     Lin [icon: aws-ec2]
   }
