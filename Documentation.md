@@ -510,3 +510,40 @@ aws ec2 create-route-table --vpc-id vpc-0a22d771f16ae549d --profile devopsteam03
 |||  10.0.0.0/16          |  local     |  CreateRouteTable  |  active |||
 ||+-----------------------+------------+--------------------+---------+||
 ```
+### créer une route table
+
+* [lien vers la doc associate-route-table](https://docs.aws.amazon.com/cli/latest/reference/ec2/associate-route-table.html)
+
+* comment associer une route table à un subnet?
+
+```bash
+aws ec2 associate-route-table --route-table-id rtb-07bf97cd343c65b4c --subnet-id subnet-0aaee76144e27a3dd --profile devopsteam03 --output table
+```
+```
+[output]
+-------------------------------------------------
+|              AssociateRouteTable              |
++----------------+------------------------------+
+|  AssociationId |  rtbassoc-0a41421456eb54417  |
++----------------+------------------------------+
+||              AssociationState               ||
+|+----------------+----------------------------+|
+||  State         |  associated                ||
+|+----------------+----------------------------+|
+```
+
+### créer une route table
+
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui donne accès à internet?
+
+```bash
+aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-block 0.0.0.0/0 --gateway-id igw-059306bf876cf19f6 --profile devopsteam03
+```
+```
+[output]
+{
+    "Return": true
+}
+```
