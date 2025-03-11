@@ -548,3 +548,25 @@ aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-b
     "Return": true
 }
 ```
+
+# Liste de question révisions test
+
+### 1. à quoi sert un vpc ?
+
+### 2. pourquoi utiliser des sous réseaux et pas directement le vpc?
+
+### 3. pourquoi ne pas connecter le sous réseau privé directement au net ?
+
+### 4. quel est le mot clé pour associer une route table à un subnet ?
+
+### 5. à quoi sert une route table ?
+
+### 6. qu'est ce que c'est une route ?
+
+### 7. quel est la différence entre s3 et ec2 ?
+
+### 8. à quoi sert ec2
+
+### 9. quel est la différenec entre un cloud privé et un cloud communautaire ?
+
+### 10. quel est l'erreur dans cette commande : aws ec2 create-route-table --vpcid vpc-0a22d771f16ae549d --profile devopsteam03 --output table
