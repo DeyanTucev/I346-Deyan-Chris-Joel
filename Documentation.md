@@ -510,7 +510,7 @@ aws ec2 create-route-table --vpc-id vpc-0a22d771f16ae549d --profile devopsteam03
 |||  10.0.0.0/16          |  local     |  CreateRouteTable  |  active |||
 ||+-----------------------+------------+--------------------+---------+||
 ```
-### créer une route table
+### associer une route table
 
 * [lien vers la doc associate-route-table](https://docs.aws.amazon.com/cli/latest/reference/ec2/associate-route-table.html)
 
