@@ -11,20 +11,18 @@ VPC [icon: aws-vpc] {
     Nat [icon: aws-nat-gateway]
   }
 
-  RTF Table [icon: aws-auto-scaling]
-
   Private Subnet [color: red] {
+    RTE Table [icon: aws-auto-scaling]
     Win [icon: aws-ec2]
     Lin [icon: aws-ec2]
   }
 }
 
 // Define connections
-IGW > Server SSH
-Server SSH > RTF Table
-RTF Table > Win, Lin
-IGW < Nat < RTF Table
-RTF Table < Win, Lin
+IGW > Server SSH > RTE Table
+RTE Table > Win, Lin
+IGW < Nat < RTE Table
+RTE Table < Win, Lin
 Net > IGW
 Net < IGW
 User > IGW

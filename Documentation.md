@@ -23,14 +23,14 @@
 Attention:
 * Vous devez utiliser la v2 du CLI
 
-### affichez la liste des VPCS
+### Affichez la liste des VPCS
 
-* [lien à mettre](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html#examples)
+* [lien à mettre](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-vpcs.html)
 
 * quel est la liste des vpcs ?
 
 ```bash
-aws ec2 describe-vpcs --profile devopsteam03 --output table
+aws ec2 describe-vpcs --profile devopsteam03 --output table --region eu-central-1
 ```
 
 ```
@@ -68,14 +68,14 @@ aws ec2 describe-vpcs --profile devopsteam03 --output table
 ||+----------------------+------------------------------+||
 
 ```
-### affichez la liste des subnets
+### Affichez la liste des subnets
 
 * [lien vers la doc describe-subnets](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-subnets.html)
 
 * quel est la liste des subnets ?
 
 ```bash
-aws ec2 describe-subnets --profile devopsteam03 --output table
+aws ec2 describe-subnets --profile devopsteam03 --output table --region eu-central-1
 ```
 
 ```
@@ -218,6 +218,39 @@ aws ec2 describe-subnets --profile devopsteam03 --output table
 ||                                                 Subnets                                                ||
 |+------------------------------+-------------------------------------------------------------------------+|
 ||  AssignIpv6AddressOnCreation |  False                                                                  ||
+||  AvailabilityZone            |  eu-central-1a                                                          ||
+||  AvailabilityZoneId          |  euc1-az2                                                               ||
+||  AvailableIpAddressCount     |  11                                                                     ||
+||  CidrBlock                   |  10.0.99.0/28                                                           ||
+||  DefaultForAz                |  False                                                                  ||
+||  EnableDns64                 |  False                                                                  ||
+||  Ipv6Native                  |  False                                                                  ||
+||  MapCustomerOwnedIpOnLaunch  |  False                                                                  ||
+||  MapPublicIpOnLaunch         |  False                                                                  ||
+||  OwnerId                     |  709024702237                                                           ||
+||  State                       |  available                                                              ||
+||  SubnetArn                   |  arn:aws:ec2:eu-central-1:709024702237:subnet/subnet-026ee5b4de5a53a01  ||
+||  SubnetId                    |  subnet-026ee5b4de5a53a01                                               ||
+||  VpcId                       |  vpc-0a22d771f16ae549d                                                  ||
+|+------------------------------+-------------------------------------------------------------------------+|
+|||                                        BlockPublicAccessStates                                       |||
+||+---------------------------------------------------------------------------------+--------------------+||
+|||  InternetGatewayBlockMode                                                       |  off               |||
+||+---------------------------------------------------------------------------------+--------------------+||
+|||                                     PrivateDnsNameOptionsOnLaunch                                    |||
+||+-----------------------------------------------------------------------------+------------------------+||
+|||  EnableResourceNameDnsAAAARecord                                            |  False                 |||
+|||  EnableResourceNameDnsARecord                                               |  False                 |||
+|||  HostnameType                                                               |  ip-name               |||
+||+-----------------------------------------------------------------------------+------------------------+||
+|||                                                 Tags                                                 |||
+||+---------------------------+--------------------------------------------------------------------------+||
+|||  Key                      |  Name                                                                    |||
+|||  Value                    |  subnet-10.0.99.0/28                                                     |||
+||+---------------------------+--------------------------------------------------------------------------+||
+||                                                 Subnets                                                ||
+|+------------------------------+-------------------------------------------------------------------------+|
+||  AssignIpv6AddressOnCreation |  False                                                                  ||
 ||  AvailabilityZone            |  eu-central-1c                                                          ||
 ||  AvailabilityZoneId          |  euc1-az1                                                               ||
 ||  AvailableIpAddressCount     |  10                                                                     ||
@@ -314,39 +347,6 @@ aws ec2 describe-subnets --profile devopsteam03 --output table
 |||  Key                       |  Name                                                                   |||
 |||  Value                     |  subnet-10.0.1.0/28                                                     |||
 ||+----------------------------+-------------------------------------------------------------------------+||
-||                                                 Subnets                                                ||
-|+------------------------------+-------------------------------------------------------------------------+|
-||  AssignIpv6AddressOnCreation |  False                                                                  ||
-||  AvailabilityZone            |  eu-central-1a                                                          ||
-||  AvailabilityZoneId          |  euc1-az2                                                               ||
-||  AvailableIpAddressCount     |  11                                                                     ||
-||  CidrBlock                   |  10.0.99.0/28                                                           ||
-||  DefaultForAz                |  False                                                                  ||
-||  EnableDns64                 |  False                                                                  ||
-||  Ipv6Native                  |  False                                                                  ||
-||  MapCustomerOwnedIpOnLaunch  |  False                                                                  ||
-||  MapPublicIpOnLaunch         |  False                                                                  ||
-||  OwnerId                     |  709024702237                                                           ||
-||  State                       |  available                                                              ||
-||  SubnetArn                   |  arn:aws:ec2:eu-central-1:709024702237:subnet/subnet-0cfda26e6ed7eeeca  ||
-||  SubnetId                    |  subnet-0cfda26e6ed7eeeca                                               ||
-||  VpcId                       |  vpc-0a22d771f16ae549d                                                  ||
-|+------------------------------+-------------------------------------------------------------------------+|
-|||                                        BlockPublicAccessStates                                       |||
-||+---------------------------------------------------------------------------------+--------------------+||
-|||  InternetGatewayBlockMode                                                       |  off               |||
-||+---------------------------------------------------------------------------------+--------------------+||
-|||                                     PrivateDnsNameOptionsOnLaunch                                    |||
-||+-----------------------------------------------------------------------------+------------------------+||
-|||  EnableResourceNameDnsAAAARecord                                            |  False                 |||
-|||  EnableResourceNameDnsARecord                                               |  False                 |||
-|||  HostnameType                                                               |  ip-name               |||
-||+-----------------------------------------------------------------------------+------------------------+||
-|||                                                 Tags                                                 |||
-||+---------------------------+--------------------------------------------------------------------------+||
-|||  Key                      |  Name                                                                    |||
-|||  Value                    |  subnet-10.0.99.0/28                                                     |||
-||+---------------------------+--------------------------------------------------------------------------+||
 ||                                                 Subnets                                                ||
 |+------------------------------+-------------------------------------------------------------------------+|
 ||  AssignIpv6AddressOnCreation |  False                                                                  ||
@@ -480,8 +480,9 @@ aws ec2 describe-subnets --profile devopsteam03 --output table
 |||  Value                     |  subnet-10.0.7.0/28                                                     |||
 ||+----------------------------+-------------------------------------------------------------------------+||
 
+
 ```
-### créer une route table
+### Créer une route table
 
 * [lien vers la doc create-route-table](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route-table.html)
 
@@ -510,7 +511,7 @@ aws ec2 create-route-table --vpc-id vpc-0a22d771f16ae549d --profile devopsteam03
 |||  10.0.0.0/16          |  local     |  CreateRouteTable  |  active |||
 ||+-----------------------+------------+--------------------+---------+||
 ```
-### créer une route table
+### Créer une route table
 
 * [lien vers la doc associate-route-table](https://docs.aws.amazon.com/cli/latest/reference/ec2/associate-route-table.html)
 
@@ -532,7 +533,7 @@ aws ec2 associate-route-table --route-table-id rtb-07bf97cd343c65b4c --subnet-id
 |+----------------+----------------------------+|
 ```
 
-### créer une route table
+### Créer une route table
 
 * [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
 
