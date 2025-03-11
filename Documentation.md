@@ -532,7 +532,7 @@ aws ec2 associate-route-table --route-table-id rtb-07bf97cd343c65b4c --subnet-id
 |+----------------+----------------------------+|
 ```
 
-### créer une route table
+### créer une route dans une route table
 
 * [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
 
