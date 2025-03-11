@@ -549,6 +549,19 @@ aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-b
 }
 ```
 
+### Ajout tagname pour la table de routage
+
+* [lien vers la doc create-route](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-tags.html)
+
+* comment créer et ajouter un tage à la table de routage?
+
+```bash
+aws ec2 create-tags --resources rtb-07bf97cd343c65b4c --tags Key=RTE,Value=Group03 --profile devopsteam03 --region eu-central-1
+```
+```
+Non fonctionel pour le moment
+```
+
 # Liste de question révisions test
 
 ### 1. à quoi sert un vpc ?
