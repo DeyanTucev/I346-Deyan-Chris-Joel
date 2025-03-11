@@ -537,10 +537,10 @@ aws ec2 associate-route-table --route-table-id rtb-07bf97cd343c65b4c --subnet-id
 
 * [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
 
-* comment créer une route qui donne accès à internet?
+* comment créer une route qui target le serveur ssh ?
 
 ```bash
-aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-block 0.0.0.0/0 --gateway-id igw-059306bf876cf19f6 --profile devopsteam03
+aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-block 10.0.3.0/28 --gateway-id igw-059306bf876cf19f6 --profile devopsteam03
 ```
 ```
 [output]
