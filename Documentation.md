@@ -578,7 +578,8 @@ Non fonctionel pour le moment
 * comment créer un groupe de sécurité de sous-réseau ?
 
 ```bash
-aws ec2 create-security-group --group-name securgrp-i346-devopsteam03 --description "securgrp-i346-devopsteam03" --profile devopsteam03 --region eu-central-1
+aws ec2 create-security-group --group-name securgrp-i346-devopsteam03 --description "securgrp-i346-devopsteam03" --profile devopsteam03 --region eu-central-1 --vpc-id vpc-0a22d771f16ae549d
+
 ```
 ```
 Non fonctionnel pour le moment
