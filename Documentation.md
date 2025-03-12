@@ -540,7 +540,7 @@ aws ec2 associate-route-table --route-table-id rtb-07bf97cd343c65b4c --subnet-id
 * comment créer une route qui target le serveur ssh ?
 
 ```bash
-aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-block 10.0.3.0/28 --gateway-id igw-059306bf876cf19f6 --profile devopsteam03
+aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-block 0.0.0.0/0 --gateway-id igw-059306bf876cf19f6 --profile devopsteam03
 ```
 ```
 [output]
@@ -554,13 +554,170 @@ aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-b
 * [lien vers la doc create-route](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-tags.html)
 
 * comment créer et ajouter un tage à la table de routage?
-
 ```bash
 aws ec2 create-tags --resources rtb-07bf97cd343c65b4c --tags Key=RTE,Value=Group03 --profile devopsteam03 --region eu-central-1
 ```
 ```
 Non fonctionel pour le moment
 ```
+
+### Associer la route tabe à la DMZ
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Créer un groupe de sécurité sous-réseau
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Créer et mettre en ligne des clès privés
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Déployer une instance linux
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Déployer une instance windows
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Configurer accès SSH (tunnel à la DMZ)
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Tester les accès linux inbound
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Tester les accès linux outbound
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Tester les accès windows inbound
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Tester les accès windows outbound
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Start ec2
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Stop ec2
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Terminate ec2
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+### Nettoyer ce que l'on a fait 
+* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+
+* comment créer une route qui target le serveur ssh ?
+
+```bash
+```
+```
+[output]
+```
+
+
+
+
 
 # Liste de question révisions test
 
