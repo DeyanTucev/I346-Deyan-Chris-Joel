@@ -11,8 +11,9 @@ VPC [icon: aws-vpc] {
     Nat [icon: aws-nat-gateway]
   }
 
+  RTE Table [icon: aws-auto-scaling]
+
   Private Subnet [color: red] {
-    RTE Table [icon: aws-auto-scaling]
     Win [icon: aws-ec2]
     Lin [icon: aws-ec2]
   }
