@@ -551,7 +551,7 @@ aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-b
 
 ### Ajout tagname pour la table de routage
 
-* [lien vers la doc create-route](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-tags.html)
+* [lien vers la doc create-tags](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-tags.html)
 
 * comment créer et ajouter un tage à la table de routage?
 ```bash
@@ -573,14 +573,15 @@ Non fonctionel pour le moment
 ```
 
 ### Créer un groupe de sécurité sous-réseau
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc create-security-group](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-security-group.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment créer un groupe de sécurité de sous-réseau ?
 
 ```bash
+aws ec2 create-security-group --group-name securgrp-i346-devopsteam03 --description "securgrp-i346-devopsteam03" --profile devopsteam03 --region eu-central-1
 ```
 ```
-[output]
+Non fonctionnel pour le moment
 ```
 
 ### Créer et mettre en ligne des clès privés
