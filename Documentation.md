@@ -616,9 +616,139 @@ Nous avons obtenu un fichier .pem contenant notre clé privée
 * comment créer une route qui target le serveur ssh ?
 
 ```bash
+aws ec2 run-instances --image-id ami-045114d716addc65d --instance-type t3.micro --key-name KEY-I346-SUB-DEVOPSTEAM03 --subnet-id subnet-0aaee76144e27a3dd --security-group-ids sg-086f8ce047d5b890b --private-ip-address 10.0.3.10 --region eu-central-1 --profile devopsteam03 --output table
 ```
 ```
-[output]
+-----------------------------------------------------------------------------
+|                               RunInstances                                |
++-------------------------------+-------------------------------------------+
+|  OwnerId                      |  709024702237                             |
+|  ReservationId                |  r-02e8d063aba9ede5c                      |
++-------------------------------+-------------------------------------------+
+||                                Instances                                ||
+|+--------------------------+----------------------------------------------+|
+||  AmiLaunchIndex          |  0                                           ||
+||  Architecture            |  x86_64                                      ||
+||  BootMode                |  uefi                                        ||
+||  ClientToken             |  d9c6e8a3-b635-4f6f-b7ed-5aed8adda954        ||
+||  CurrentInstanceBootMode |  uefi                                        ||
+||  EbsOptimized            |  False                                       ||
+||  EnaSupport              |  True                                        ||
+||  Hypervisor              |  xen                                         ||
+||  ImageId                 |  ami-045114d716addc65d                       ||
+||  InstanceId              |  i-02722195c013be8b5                         ||
+||  InstanceType            |  t3.micro                                    ||
+||  KeyName                 |  KEY-I346-SUB-DEVOPSTEAM03                   ||
+||  LaunchTime              |  2025-03-18T14:50:32+00:00                   ||
+||  Platform                |  windows                                     ||
+||  PrivateDnsName          |  ip-10-0-3-10.eu-central-1.compute.internal  ||
+||  PrivateIpAddress        |  10.0.3.10                                   ||
+||  PublicDnsName           |                                              ||
+||  RootDeviceName          |  /dev/sda1                                   ||
+||  RootDeviceType          |  ebs                                         ||
+||  SourceDestCheck         |  True                                        ||
+||  StateTransitionReason   |                                              ||
+||  SubnetId                |  subnet-0aaee76144e27a3dd                    ||
+||  VirtualizationType      |  hvm                                         ||
+||  VpcId                   |  vpc-0a22d771f16ae549d                       ||
+|+--------------------------+----------------------------------------------+|
+|||                   CapacityReservationSpecification                    |||
+||+---------------------------------------------------------+-------------+||
+|||  CapacityReservationPreference                          |  open       |||
+||+---------------------------------------------------------+-------------+||
+|||                              CpuOptions                               |||
+||+-------------------------------------------------------+---------------+||
+|||  CoreCount                                            |  1            |||
+|||  ThreadsPerCore                                       |  2            |||
+||+-------------------------------------------------------+---------------+||
+|||                            EnclaveOptions                             |||
+||+--------------------------------------+--------------------------------+||
+|||  Enabled                             |  False                         |||
+||+--------------------------------------+--------------------------------+||
+|||                          MaintenanceOptions                           |||
+||+-----------------------------------------+-----------------------------+||
+|||  AutoRecovery                           |  default                    |||
+||+-----------------------------------------+-----------------------------+||
+|||                            MetadataOptions                            |||
+||+-------------------------------------------------+---------------------+||
+|||  HttpEndpoint                                   |  enabled            |||
+|||  HttpProtocolIpv6                               |  disabled           |||
+|||  HttpPutResponseHopLimit                        |  2                  |||
+|||  HttpTokens                                     |  required           |||
+|||  InstanceMetadataTags                           |  disabled           |||
+|||  State                                          |  pending            |||
+||+-------------------------------------------------+---------------------+||
+|||                              Monitoring                               |||
+||+-----------------------------+-----------------------------------------+||
+|||  State                      |  disabled                               |||
+||+-----------------------------+-----------------------------------------+||
+|||                           NetworkInterfaces                           |||
+||+------------------------------+----------------------------------------+||
+|||  Description                 |                                        |||
+|||  InterfaceType               |  interface                             |||
+|||  MacAddress                  |  0a:87:73:34:9d:6b                     |||
+|||  NetworkInterfaceId          |  eni-012050d96f1a13a2c                 |||
+|||  OwnerId                     |  709024702237                          |||
+|||  PrivateIpAddress            |  10.0.3.10                             |||
+|||  SourceDestCheck             |  True                                  |||
+|||  Status                      |  in-use                                |||
+|||  SubnetId                    |  subnet-0aaee76144e27a3dd              |||
+|||  VpcId                       |  vpc-0a22d771f16ae549d                 |||
+||+------------------------------+----------------------------------------+||
+||||                             Attachment                              ||||
+|||+----------------------------+----------------------------------------+|||
+||||  AttachTime                |  2025-03-18T14:50:32+00:00             ||||
+||||  AttachmentId              |  eni-attach-011fc8475344d508b          ||||
+||||  DeleteOnTermination       |  True                                  ||||
+||||  DeviceIndex               |  0                                     ||||
+||||  NetworkCardIndex          |  0                                     ||||
+||||  Status                    |  attaching                             ||||
+|||+----------------------------+----------------------------------------+|||
+||||                               Groups                                ||||
+|||+-------------------+-------------------------------------------------+|||
+||||  GroupId          |  sg-086f8ce047d5b890b                           ||||
+||||  GroupName        |  securgrp-i346-devopsteam03                     ||||
+|||+-------------------+-------------------------------------------------+|||
+||||                              Operator                               ||||
+|||+-------------------------------------+-------------------------------+|||
+||||  Managed                            |  False                        ||||
+|||+-------------------------------------+-------------------------------+|||
+||||                         PrivateIpAddresses                          ||||
+|||+-----------------------------------------+---------------------------+|||
+||||  Primary                                |  True                     ||||
+||||  PrivateIpAddress                       |  10.0.3.10                ||||
+|||+-----------------------------------------+---------------------------+|||
+|||                               Operator                                |||
+||+--------------------------------------+--------------------------------+||
+|||  Managed                             |  False                         |||
+||+--------------------------------------+--------------------------------+||
+|||                               Placement                               |||
+||+-------------------------------------+---------------------------------+||
+|||  AvailabilityZone                   |  eu-central-1c                  |||
+|||  GroupName                          |                                 |||
+|||  Tenancy                            |  default                        |||
+||+-------------------------------------+---------------------------------+||
+|||                         PrivateDnsNameOptions                         |||
+||+------------------------------------------------------+----------------+||
+|||  EnableResourceNameDnsAAAARecord                     |  False         |||
+|||  EnableResourceNameDnsARecord                        |  False         |||
+|||  HostnameType                                        |  ip-name       |||
+||+------------------------------------------------------+----------------+||
+|||                            SecurityGroups                             |||
+||+--------------------+--------------------------------------------------+||
+|||  GroupId           |  sg-086f8ce047d5b890b                            |||
+|||  GroupName         |  securgrp-i346-devopsteam03                      |||
+||+--------------------+--------------------------------------------------+||
+|||                                 State                                 |||
+||+-----------------------------+-----------------------------------------+||
+|||  Code                       |  0                                      |||
+|||  Name                       |  pending                                |||
+||+-----------------------------+-----------------------------------------+||
+|||                              StateReason                              |||
+||+----------------------------------+------------------------------------+||
+|||  Code                            |  pending                           |||
+|||  Message                         |  pending                           |||
+||+----------------------------------+------------------------------------+||
 ```
 
 ### Configurer accès SSH (tunnel à la DMZ)
