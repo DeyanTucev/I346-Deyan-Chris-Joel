@@ -2,28 +2,33 @@ cloud-architecture-diagram
 
 // Define groups and nodes
 User [icon: aws-end-user-computing]
-Net [icon: aws-cloudwatch]
-IGW [icon: aws-internet-gateway]
+Cloud [icon: cloud]
 
 VPC [icon: aws-vpc] {
+  IGW [icon: aws-internet-gateway]
+
   Public Subnet {
     Server SSH [icon: aws-ec2]
     Nat [icon: aws-nat-gateway]
+    Public Security Group Ingress[icon: aws-security-group]
+    Public Security Group Outbound[icon: aws-security-group]
+    Public RTE Table [icon: aws-auto-scaling]
   }
 
-  RTE Table [icon: aws-auto-scaling]
-
   Private Subnet [color: red] {
+    Private RTE Table [icon: aws-auto-scaling]
     Win [icon: aws-ec2]
     Lin [icon: aws-ec2]
+    Private Security Group Ingress[icon: aws-security-group]
+    Private Security Group Outbound[icon: aws-security-group]
   }
 }
 
 // Define connections
-IGW > Server SSH > RTE Table
-RTE Table > Win, Lin
-IGW < Nat < RTE Table
-RTE Table < Win, Lin
-Net > IGW
-Net < IGW
-User > IGW
+IGW > Public Security Group Ingress > Server SSH > Private Security Group Ingress
+Private Security Group Ingress > Win, Lin
+User > Cloud
+Win > Private Security Group Outbound > Nat > Cloud > IGW
+Lin > Private Security Group Outbound
+Private RTE Table -- Private Security Group Ingress 
+Public RTE Table -- Public Security Group Ingress 
