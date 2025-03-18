@@ -558,7 +558,6 @@ aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-b
 aws ec2 create-tags --resources rtb-07bf97cd343c65b4c --tags Key=RTE,Value=Group03 --profile devopsteam03 --region eu-central-1
 ```
 ```
-Non fonctionel pour le moment
 ```
 
 ### Associer la route tabe à la DMZ
@@ -582,19 +581,23 @@ aws ec2 create-security-group --group-name securgrp-i346-devopsteam03 --descript
 
 ```
 ```
-Non fonctionnel pour le moment
+{
+    "GroupId": "sg-086f8ce047d5b890b",
+    "SecurityGroupArn": "arn:aws:ec2:eu-central-1:709024702237:security-group/sg-086f8ce047d5b890b"
+}
 ```
 
 ### Créer et mettre en ligne des clès privés
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc create-key-pairs](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-key-pair.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment créer une paire de clés ?
 
-```bash
+```
+aws ec2 create-key-pair --key-name KEY-I346-SUB-DEVOPSTEAM03 --key-type rsa --key-format pem --region eu-central-1 --profile devopsteam03 --output text > KEY-I346-SUB-DEVOPSTEAM03.pem  
 ```
 ```
-[output]
 ```
+Nous avons obtenu un fichier .pem contenant notre clé privée
 
 ### Déployer une instance linux
 * [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
