@@ -870,14 +870,39 @@ aws ec2 run-instances --image-id ami-045114d716addc65d --instance-type t3.micro 
 ```
 
 ### Configurer accès SSH (tunnel à la DMZ)
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc connect-linux-inst-ssh](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment configurer le tunnel SSH ?
 
 ```bash
+ssh devopsteam03@52.59.181.213 -i KEY-I346-DMZ-DEVOPSTEAM03.pem -L 23:10.0.3.11:22 -L 3399:10.0.3.10:3389
 ```
 ```
-[output]
+Linux ip-10-0-0-10 6.1.0-31-cloud-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.128-1 (2025-02-07) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Mar 19 12:02:17 2025 from 193.5.240.9
+```
+
+### Obtenir le mot de passe Windows
+* [lien vers la doc get-password-data](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/get-password-data.html)
+
+* comment obtenir le mot de passe de notre instance Windows ?
+
+```bash
+aws ec2 get-password-data --instance-id i-02722195c013be8b5 --priv-launch-key KEY-I346-SUB-DEVOPSTEAM03.pem --profile devopsteam03 --region eu-central-1
+```
+```
+{
+    "InstanceId": "i-02722195c013be8b5",
+    "Timestamp": "2025-03-18T14:56:59+00:00",
+    "PasswordData": "****"
+}
 ```
 
 ### Tester les accès linux inbound
