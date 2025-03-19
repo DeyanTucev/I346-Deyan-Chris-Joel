@@ -961,14 +961,29 @@ aws ec2 get-password-data --instance-id i-02722195c013be8b5 --priv-launch-key KE
 ```
 
 ### Stop ec2
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc stop-instances](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/stop-instances.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment stoper une instance ?
 
 ```bash
+aws ec2 stop-instances --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03 --region eu-central-1
 ```
 ```
-[output]
+{
+    "StoppingInstances": [
+        {
+            "InstanceId": "i-0036e5e28eddfcd86",
+            "CurrentState": {
+                "Code": 64,
+                "Name": "stopping"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
 ```
 
 ### Terminate ec2
