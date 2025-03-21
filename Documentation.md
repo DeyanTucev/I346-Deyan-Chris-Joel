@@ -25,7 +25,7 @@ Attention:
 
 ### Affichez la liste des VPCS
 
-* [lien à mettre](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-vpcs.html)
+* [lien vers la doc describe-vpcs](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-vpcs.html)
 
 * quel est la liste des vpcs ?
 
@@ -950,14 +950,29 @@ aws ec2 get-password-data --instance-id i-02722195c013be8b5 --priv-launch-key KE
 ```
 
 ### Start ec2
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc start-instances](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/start-instances.html)
 
 * comment créer une route qui target le serveur ssh ?
 
 ```bash
+aws ec2 start-instances --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03 --region eu-central-1
 ```
 ```
-[output]
+{
+    "StartingInstances": [
+        {
+            "InstanceId": "i-0036e5e28eddfcd86",
+            "CurrentState": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PreviousState": {
+                "Code": 80,
+                "Name": "stopped"
+            }
+        }
+    ]
+}
 ```
 
 ### Stop ec2
