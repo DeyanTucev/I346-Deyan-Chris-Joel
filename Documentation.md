@@ -889,6 +889,35 @@ permitted by applicable law.
 Last login: Wed Mar 19 12:02:17 2025 from 193.5.240.9
 ```
 
+### Autoriser le groupe de sécurité
+* [lien vers la doc authorize-security-group-ingress](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/authorize-security-group-ingress.html)
+
+* comment autoriser l'accès au groupe de sécurité ?
+
+```bash
+aws ec2 authorize-security-group-ingress --group-id sg-086f8ce047d5b890b --ip-permissions "IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=10.0.0.0/28,Description=SSH-FROM-DMZ}]" --region eu-central-1 --profile devopsteam03 --output table
+```
+```
+---------------------------------------------------------------------------------------------------------------
+|                                        AuthorizeSecurityGroupIngress                                        |
++------------------------------------------------------------+------------------------------------------------+
+|  Return                                                    |  True                                          |
++------------------------------------------------------------+------------------------------------------------+
+||                                            SecurityGroupRules                                             ||
+|+----------------------+------------------------------------------------------------------------------------+|
+||  CidrIpv4            |  10.0.0.0/28                                                                       ||
+||  Description         |  SSH-FROM-DMZ                                                                      ||
+||  FromPort            |  22                                                                                ||
+||  GroupId             |  sg-086f8ce047d5b890b                                                              ||
+||  GroupOwnerId        |  709024702237                                                                      ||
+||  IpProtocol          |  tcp                                                                               ||
+||  IsEgress            |  False                                                                             ||
+||  SecurityGroupRuleArn|  arn:aws:ec2:eu-central-1:709024702237:security-group-rule/sgr-043a33f1a601a6cb3   ||
+||  SecurityGroupRuleId |  sgr-043a33f1a601a6cb3                                                             ||
+||  ToPort              |  22                                                                                ||
+|+----------------------+------------------------------------------------------------------------------------+|
+```
+
 ### Obtenir le mot de passe Windows
 * [lien vers la doc get-password-data](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/get-password-data.html)
 
@@ -952,7 +981,7 @@ aws ec2 get-password-data --instance-id i-02722195c013be8b5 --priv-launch-key KE
 ### Start ec2
 * [lien vers la doc start-instances](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/start-instances.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment démarré son instance ec2 ?
 
 ```bash
 aws ec2 start-instances --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03 --region eu-central-1
