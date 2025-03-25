@@ -935,9 +935,6 @@ aws ec2 get-password-data --instance-id i-02722195c013be8b5 --priv-launch-key KE
 ```
 
 ### Tester les accès linux inbound
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
-
-* comment créer une route qui target le serveur ssh ?
 
 ```bash
 ssh admin@localhost -p 23 -i KEY-I346-SUB-DEVOPSTEAM03.pem
@@ -956,9 +953,6 @@ devopsteam03@ip-10-0-0-10:~$
 ```
 
 ### Tester les accès linux outbound
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
-
-* comment créer une route qui target le serveur ssh ?
 
 ```bash
 ping 8.8.8.8
@@ -974,25 +968,20 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 ```
 
 ### Tester les accès windows inbound
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
 
-* comment créer une route qui target le serveur ssh ?
-
-```bash
-```
-```
-[output]
-```
+Se connecter à partir du bureau à distance avec l'utilisateu : Administrator.
 
 ### Tester les accès windows outbound
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
-
-* comment créer une route qui target le serveur ssh ?
 
 ```bash
+ping 8.8.8.8
 ```
 ```
-[output]
+Pinging 8.8.8.8 with 32 bytes of data:
+Reply from 8.8.8.8: bytes=32 time=2ms TTL=57
+Reply from 8.8.8.8: bytes=32 time=2ms TTL=57
+Reply from 8.8.8.8: bytes=32 time=2ms TTL=57
+Reply from 8.8.8.8: bytes=32 time=2ms TTL=57
 ```
 
 ### Start ec2
