@@ -969,7 +969,7 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 
 ### Tester les accès windows inbound
 
-Se connecter à partir du bureau à distance avec l'utilisateu : Administrator.
+Se connecter à partir du bureau à distance avec l'utilisateur : Administrator.
 
 ### Tester les accès windows outbound
 
