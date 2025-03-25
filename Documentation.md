@@ -25,7 +25,7 @@ Attention:
 
 ### Affichez la liste des VPCS
 
-* [lien à mettre](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-vpcs.html)
+* [lien vers la doc describe-vpcs](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/describe-vpcs.html)
 
 * quel est la liste des vpcs ?
 
@@ -551,146 +551,489 @@ aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-b
 
 ### Ajout tagname pour la table de routage
 
-* [lien vers la doc create-route](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-tags.html)
+* [lien vers la doc create-tags](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-tags.html)
 
 * comment créer et ajouter un tage à la table de routage?
 ```bash
-aws ec2 create-tags --resources rtb-07bf97cd343c65b4c --tags Key=RTE,Value=Group03 --profile devopsteam03 --region eu-central-1
+aws ec2 create-tags --resources rtb-07bf97cd343c65b4c --tags Key=Name,Value=Group03 --profile devopsteam03 --region eu-central-1
 ```
 ```
-Non fonctionel pour le moment
-```
-
-### Associer la route tabe à la DMZ
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
-
-* comment créer une route qui target le serveur ssh ?
-
-```bash
-```
-```
-[output]
 ```
 
 ### Créer un groupe de sécurité sous-réseau
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc create-security-group](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-security-group.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment créer un groupe de sécurité de sous-réseau ?
 
 ```bash
+aws ec2 create-security-group --group-name securgrp-i346-devopsteam03 --description "securgrp-i346-devopsteam03" --profile devopsteam03 --region eu-central-1 --vpc-id vpc-0a22d771f16ae549d
+
 ```
 ```
-[output]
+{
+    "GroupId": "sg-086f8ce047d5b890b",
+    "SecurityGroupArn": "arn:aws:ec2:eu-central-1:709024702237:security-group/sg-086f8ce047d5b890b"
+}
 ```
 
 ### Créer et mettre en ligne des clès privés
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc create-key-pairs](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-key-pair.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment créer une paire de clés ?
 
-```bash
+```
+aws ec2 create-key-pair --key-name KEY-I346-SUB-DEVOPSTEAM03 --key-type rsa --key-format pem --region eu-central-1 --profile devopsteam03 --output text > KEY-I346-SUB-DEVOPSTEAM03.pem  
 ```
 ```
-[output]
 ```
+Nous avons obtenu un fichier .pem contenant notre clé privée
 
 ### Déployer une instance linux
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc run-instance](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/run-instances.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment lancer une instance linux ?
 
 ```bash
+aws ec2 run-instances --image-id ami-0584590e5f0e97daa --instance-type t2.micro --key-name KEY-I346-SUB-DEVOPSTEAM03 --subnet-id subnet-0aaee76144e27a3dd --security-group-ids sg-086f8ce047d5b890b --private-ip-address 10.0.3.10 --region eu-central-1 --profile devopsteam03 --output table
 ```
 ```
-[output]
+-----------------------------------------------------------------------------
+|                               RunInstances                                |
++-------------------------------+-------------------------------------------+
+|  OwnerId                      |  709024702237                             |
+|  ReservationId                |  r-0e32059885aab2260                      |
++-------------------------------+-------------------------------------------+
+||                                Instances                                ||
+|+--------------------------+----------------------------------------------+|
+||  AmiLaunchIndex          |  0                                           ||
+||  Architecture            |  x86_64                                      ||
+||  ClientToken             |  d05a8306-9853-44ad-bf80-c5e94717698d        ||
+||  CurrentInstanceBootMode |  legacy-bios                                 ||
+||  EbsOptimized            |  False                                       ||
+||  EnaSupport              |  True                                        ||
+||  Hypervisor              |  xen                                         ||
+||  ImageId                 |  ami-0584590e5f0e97daa                       ||
+||  InstanceId              |  i-0036e5e28eddfcd86                         ||
+||  InstanceType            |  t2.micro                                    ||
+||  KeyName                 |  KEY-I346-SUB-DEVOPSTEAM03                   ||
+||  LaunchTime              |  2025-03-19T10:31:43+00:00                   ||
+||  PrivateDnsName          |  ip-10-0-3-11.eu-central-1.compute.internal  ||
+||  PrivateIpAddress        |  10.0.3.11                                   ||
+||  PublicDnsName           |                                              ||
+||  RootDeviceName          |  /dev/xvda                                   ||
+||  RootDeviceType          |  ebs                                         ||
+||  SourceDestCheck         |  True                                        ||
+||  StateTransitionReason   |                                              ||
+||  SubnetId                |  subnet-0aaee76144e27a3dd                    ||
+||  VirtualizationType      |  hvm                                         ||
+||  VpcId                   |  vpc-0a22d771f16ae549d                       ||
+|+--------------------------+----------------------------------------------+|
+|||                   CapacityReservationSpecification                    |||
+||+---------------------------------------------------------+-------------+||
+|||  CapacityReservationPreference                          |  open       |||
+||+---------------------------------------------------------+-------------+||
+|||                              CpuOptions                               |||
+||+-------------------------------------------------------+---------------+||
+|||  CoreCount                                            |  1            |||
+|||  ThreadsPerCore                                       |  1            |||
+||+-------------------------------------------------------+---------------+||
+|||                            EnclaveOptions                             |||
+||+--------------------------------------+--------------------------------+||
+|||  Enabled                             |  False                         |||
+||+--------------------------------------+--------------------------------+||
+|||                          MaintenanceOptions                           |||
+||+-----------------------------------------+-----------------------------+||
+|||  AutoRecovery                           |  default                    |||
+||+-----------------------------------------+-----------------------------+||
+|||                            MetadataOptions                            |||
+||+-------------------------------------------------+---------------------+||
+|||  HttpEndpoint                                   |  enabled            |||
+|||  HttpProtocolIpv6                               |  disabled           |||
+|||  HttpPutResponseHopLimit                        |  1                  |||
+|||  HttpTokens                                     |  optional           |||
+|||  InstanceMetadataTags                           |  disabled           |||
+|||  State                                          |  pending            |||
+||+-------------------------------------------------+---------------------+||
+|||                              Monitoring                               |||
+||+-----------------------------+-----------------------------------------+||
+|||  State                      |  disabled                               |||
+||+-----------------------------+-----------------------------------------+||
+|||                           NetworkInterfaces                           |||
+||+------------------------------+----------------------------------------+||
+|||  Description                 |                                        |||
+|||  InterfaceType               |  interface                             |||
+|||  MacAddress                  |  0a:8f:10:b3:eb:6d                     |||
+|||  NetworkInterfaceId          |  eni-09560c21bad3ff022                 |||
+|||  OwnerId                     |  709024702237                          |||
+|||  PrivateIpAddress            |  10.0.3.11                             |||
+|||  SourceDestCheck             |  True                                  |||
+|||  Status                      |  in-use                                |||
+|||  SubnetId                    |  subnet-0aaee76144e27a3dd              |||
+|||  VpcId                       |  vpc-0a22d771f16ae549d                 |||
+||+------------------------------+----------------------------------------+||
+||||                             Attachment                              ||||
+|||+----------------------------+----------------------------------------+|||
+||||  AttachTime                |  2025-03-19T10:31:43+00:00             ||||
+||||  AttachmentId              |  eni-attach-0ff14ac342090b092          ||||
+||||  DeleteOnTermination       |  True                                  ||||
+||||  DeviceIndex               |  0                                     ||||
+||||  NetworkCardIndex          |  0                                     ||||
+||||  Status                    |  attaching                             ||||
+|||+----------------------------+----------------------------------------+|||
+||||                               Groups                                ||||
+|||+-------------------+-------------------------------------------------+|||
+||||  GroupId          |  sg-086f8ce047d5b890b                           ||||
+||||  GroupName        |  securgrp-i346-devopsteam03                     ||||
+|||+-------------------+-------------------------------------------------+|||
+||||                              Operator                               ||||
+|||+-------------------------------------+-------------------------------+|||
+||||  Managed                            |  False                        ||||
+|||+-------------------------------------+-------------------------------+|||
+||||                         PrivateIpAddresses                          ||||
+|||+-----------------------------------------+---------------------------+|||
+||||  Primary                                |  True                     ||||
+||||  PrivateIpAddress                       |  10.0.3.11                ||||
+|||+-----------------------------------------+---------------------------+|||
+|||                               Operator                                |||
+||+--------------------------------------+--------------------------------+||
+|||  Managed                             |  False                         |||
+||+--------------------------------------+--------------------------------+||
+|||                               Placement                               |||
+||+-------------------------------------+---------------------------------+||
+|||  AvailabilityZone                   |  eu-central-1c                  |||
+|||  GroupName                          |                                 |||
+|||  Tenancy                            |  default                        |||
+||+-------------------------------------+---------------------------------+||
+|||                         PrivateDnsNameOptions                         |||
+||+------------------------------------------------------+----------------+||
+|||  EnableResourceNameDnsAAAARecord                     |  False         |||
+|||  EnableResourceNameDnsARecord                        |  False         |||
+|||  HostnameType                                        |  ip-name       |||
+||+------------------------------------------------------+----------------+||
+|||                            SecurityGroups                             |||
+||+--------------------+--------------------------------------------------+||
+|||  GroupId           |  sg-086f8ce047d5b890b                            |||
+|||  GroupName         |  securgrp-i346-devopsteam03                      |||
+||+--------------------+--------------------------------------------------+||
+|||                                 State                                 |||
+||+-----------------------------+-----------------------------------------+||
+|||  Code                       |  0                                      |||
+|||  Name                       |  pending                                |||
+||+-----------------------------+-----------------------------------------+||
+|||                              StateReason                              |||
+||+----------------------------------+------------------------------------+||
+|||  Code                            |  pending                           |||
+|||  Message                         |  pending                           |||
+||+----------------------------------+------------------------------------+||
+
 ```
 
 ### Déployer une instance windows
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc run-instance](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/run-instances.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment lancer une instance windows ?
 
 ```bash
+aws ec2 run-instances --image-id ami-045114d716addc65d --instance-type t3.micro --key-name KEY-I346-SUB-DEVOPSTEAM03 --subnet-id subnet-0aaee76144e27a3dd --security-group-ids sg-086f8ce047d5b890b --private-ip-address 10.0.3.10 --region eu-central-1 --profile devopsteam03 --output table
 ```
 ```
-[output]
+-----------------------------------------------------------------------------
+|                               RunInstances                                |
++-------------------------------+-------------------------------------------+
+|  OwnerId                      |  709024702237                             |
+|  ReservationId                |  r-02e8d063aba9ede5c                      |
++-------------------------------+-------------------------------------------+
+||                                Instances                                ||
+|+--------------------------+----------------------------------------------+|
+||  AmiLaunchIndex          |  0                                           ||
+||  Architecture            |  x86_64                                      ||
+||  BootMode                |  uefi                                        ||
+||  ClientToken             |  d9c6e8a3-b635-4f6f-b7ed-5aed8adda954        ||
+||  CurrentInstanceBootMode |  uefi                                        ||
+||  EbsOptimized            |  False                                       ||
+||  EnaSupport              |  True                                        ||
+||  Hypervisor              |  xen                                         ||
+||  ImageId                 |  ami-045114d716addc65d                       ||
+||  InstanceId              |  i-02722195c013be8b5                         ||
+||  InstanceType            |  t3.micro                                    ||
+||  KeyName                 |  KEY-I346-SUB-DEVOPSTEAM03                   ||
+||  LaunchTime              |  2025-03-18T14:50:32+00:00                   ||
+||  Platform                |  windows                                     ||
+||  PrivateDnsName          |  ip-10-0-3-10.eu-central-1.compute.internal  ||
+||  PrivateIpAddress        |  10.0.3.10                                   ||
+||  PublicDnsName           |                                              ||
+||  RootDeviceName          |  /dev/sda1                                   ||
+||  RootDeviceType          |  ebs                                         ||
+||  SourceDestCheck         |  True                                        ||
+||  StateTransitionReason   |                                              ||
+||  SubnetId                |  subnet-0aaee76144e27a3dd                    ||
+||  VirtualizationType      |  hvm                                         ||
+||  VpcId                   |  vpc-0a22d771f16ae549d                       ||
+|+--------------------------+----------------------------------------------+|
+|||                   CapacityReservationSpecification                    |||
+||+---------------------------------------------------------+-------------+||
+|||  CapacityReservationPreference                          |  open       |||
+||+---------------------------------------------------------+-------------+||
+|||                              CpuOptions                               |||
+||+-------------------------------------------------------+---------------+||
+|||  CoreCount                                            |  1            |||
+|||  ThreadsPerCore                                       |  2            |||
+||+-------------------------------------------------------+---------------+||
+|||                            EnclaveOptions                             |||
+||+--------------------------------------+--------------------------------+||
+|||  Enabled                             |  False                         |||
+||+--------------------------------------+--------------------------------+||
+|||                          MaintenanceOptions                           |||
+||+-----------------------------------------+-----------------------------+||
+|||  AutoRecovery                           |  default                    |||
+||+-----------------------------------------+-----------------------------+||
+|||                            MetadataOptions                            |||
+||+-------------------------------------------------+---------------------+||
+|||  HttpEndpoint                                   |  enabled            |||
+|||  HttpProtocolIpv6                               |  disabled           |||
+|||  HttpPutResponseHopLimit                        |  2                  |||
+|||  HttpTokens                                     |  required           |||
+|||  InstanceMetadataTags                           |  disabled           |||
+|||  State                                          |  pending            |||
+||+-------------------------------------------------+---------------------+||
+|||                              Monitoring                               |||
+||+-----------------------------+-----------------------------------------+||
+|||  State                      |  disabled                               |||
+||+-----------------------------+-----------------------------------------+||
+|||                           NetworkInterfaces                           |||
+||+------------------------------+----------------------------------------+||
+|||  Description                 |                                        |||
+|||  InterfaceType               |  interface                             |||
+|||  MacAddress                  |  0a:87:73:34:9d:6b                     |||
+|||  NetworkInterfaceId          |  eni-012050d96f1a13a2c                 |||
+|||  OwnerId                     |  709024702237                          |||
+|||  PrivateIpAddress            |  10.0.3.10                             |||
+|||  SourceDestCheck             |  True                                  |||
+|||  Status                      |  in-use                                |||
+|||  SubnetId                    |  subnet-0aaee76144e27a3dd              |||
+|||  VpcId                       |  vpc-0a22d771f16ae549d                 |||
+||+------------------------------+----------------------------------------+||
+||||                             Attachment                              ||||
+|||+----------------------------+----------------------------------------+|||
+||||  AttachTime                |  2025-03-18T14:50:32+00:00             ||||
+||||  AttachmentId              |  eni-attach-011fc8475344d508b          ||||
+||||  DeleteOnTermination       |  True                                  ||||
+||||  DeviceIndex               |  0                                     ||||
+||||  NetworkCardIndex          |  0                                     ||||
+||||  Status                    |  attaching                             ||||
+|||+----------------------------+----------------------------------------+|||
+||||                               Groups                                ||||
+|||+-------------------+-------------------------------------------------+|||
+||||  GroupId          |  sg-086f8ce047d5b890b                           ||||
+||||  GroupName        |  securgrp-i346-devopsteam03                     ||||
+|||+-------------------+-------------------------------------------------+|||
+||||                              Operator                               ||||
+|||+-------------------------------------+-------------------------------+|||
+||||  Managed                            |  False                        ||||
+|||+-------------------------------------+-------------------------------+|||
+||||                         PrivateIpAddresses                          ||||
+|||+-----------------------------------------+---------------------------+|||
+||||  Primary                                |  True                     ||||
+||||  PrivateIpAddress                       |  10.0.3.10                ||||
+|||+-----------------------------------------+---------------------------+|||
+|||                               Operator                                |||
+||+--------------------------------------+--------------------------------+||
+|||  Managed                             |  False                         |||
+||+--------------------------------------+--------------------------------+||
+|||                               Placement                               |||
+||+-------------------------------------+---------------------------------+||
+|||  AvailabilityZone                   |  eu-central-1c                  |||
+|||  GroupName                          |                                 |||
+|||  Tenancy                            |  default                        |||
+||+-------------------------------------+---------------------------------+||
+|||                         PrivateDnsNameOptions                         |||
+||+------------------------------------------------------+----------------+||
+|||  EnableResourceNameDnsAAAARecord                     |  False         |||
+|||  EnableResourceNameDnsARecord                        |  False         |||
+|||  HostnameType                                        |  ip-name       |||
+||+------------------------------------------------------+----------------+||
+|||                            SecurityGroups                             |||
+||+--------------------+--------------------------------------------------+||
+|||  GroupId           |  sg-086f8ce047d5b890b                            |||
+|||  GroupName         |  securgrp-i346-devopsteam03                      |||
+||+--------------------+--------------------------------------------------+||
+|||                                 State                                 |||
+||+-----------------------------+-----------------------------------------+||
+|||  Code                       |  0                                      |||
+|||  Name                       |  pending                                |||
+||+-----------------------------+-----------------------------------------+||
+|||                              StateReason                              |||
+||+----------------------------------+------------------------------------+||
+|||  Code                            |  pending                           |||
+|||  Message                         |  pending                           |||
+||+----------------------------------+------------------------------------+||
 ```
 
 ### Configurer accès SSH (tunnel à la DMZ)
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc connect-linux-inst-ssh](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment configurer le tunnel SSH ?
 
 ```bash
+ssh devopsteam03@52.59.181.213 -i KEY-I346-DMZ-DEVOPSTEAM03.pem -L 23:10.0.3.11:22 -L 3399:10.0.3.10:3389
 ```
 ```
-[output]
+Linux ip-10-0-0-10 6.1.0-31-cloud-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.128-1 (2025-02-07) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Mar 19 12:02:17 2025 from 193.5.240.9
+```
+
+### Autoriser le groupe de sécurité
+* [lien vers la doc authorize-security-group-ingress](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/authorize-security-group-ingress.html)
+
+* comment autoriser l'accès au groupe de sécurité ?
+
+```bash
+aws ec2 authorize-security-group-ingress --group-id sg-086f8ce047d5b890b --ip-permissions "IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=10.0.0.0/28,Description=SSH-FROM-DMZ}]" --region eu-central-1 --profile devopsteam03 --output table
+```
+```
+---------------------------------------------------------------------------------------------------------------
+|                                        AuthorizeSecurityGroupIngress                                        |
++------------------------------------------------------------+------------------------------------------------+
+|  Return                                                    |  True                                          |
++------------------------------------------------------------+------------------------------------------------+
+||                                            SecurityGroupRules                                             ||
+|+----------------------+------------------------------------------------------------------------------------+|
+||  CidrIpv4            |  10.0.0.0/28                                                                       ||
+||  Description         |  SSH-FROM-DMZ                                                                      ||
+||  FromPort            |  22                                                                                ||
+||  GroupId             |  sg-086f8ce047d5b890b                                                              ||
+||  GroupOwnerId        |  709024702237                                                                      ||
+||  IpProtocol          |  tcp                                                                               ||
+||  IsEgress            |  False                                                                             ||
+||  SecurityGroupRuleArn|  arn:aws:ec2:eu-central-1:709024702237:security-group-rule/sgr-043a33f1a601a6cb3   ||
+||  SecurityGroupRuleId |  sgr-043a33f1a601a6cb3                                                             ||
+||  ToPort              |  22                                                                                ||
+|+----------------------+------------------------------------------------------------------------------------+|
+```
+
+### Obtenir le mot de passe Windows
+* [lien vers la doc get-password-data](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/get-password-data.html)
+
+* comment obtenir le mot de passe de notre instance Windows ?
+
+```bash
+aws ec2 get-password-data --instance-id i-02722195c013be8b5 --priv-launch-key KEY-I346-SUB-DEVOPSTEAM03.pem --profile devopsteam03 --region eu-central-1
+```
+```
+{
+    "InstanceId": "i-02722195c013be8b5",
+    "Timestamp": "2025-03-18T14:56:59+00:00",
+    "PasswordData": "****"
+}
 ```
 
 ### Tester les accès linux inbound
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
-
-* comment créer une route qui target le serveur ssh ?
 
 ```bash
+ssh admin@localhost -p 23 -i KEY-I346-SUB-DEVOPSTEAM03.pem
 ```
 ```
-[output]
+Linux ip-10-0-0-10 6.1.0-32-cloud-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.129-1 (2025-03-06) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Mar 23 16:07:46 2025 from 188.155.160.69
+devopsteam03@ip-10-0-0-10:~$
 ```
 
 ### Tester les accès linux outbound
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
-
-* comment créer une route qui target le serveur ssh ?
 
 ```bash
+ping 8.8.8.8
 ```
 ```
-[output]
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=57 time=1.69 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=57 time=2.74 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=57 time=2.31 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=57 time=2.55 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=57 time=1.73 ms
+64 bytes from 8.8.8.8: icmp_seq=6 ttl=57 time=2.41 ms
 ```
 
 ### Tester les accès windows inbound
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
 
-* comment créer une route qui target le serveur ssh ?
-
-```bash
-```
-```
-[output]
-```
+Se connecter à partir du bureau à distance avec l'utilisateur : Administrator.
 
 ### Tester les accès windows outbound
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
-
-* comment créer une route qui target le serveur ssh ?
 
 ```bash
+ping 8.8.8.8
 ```
 ```
-[output]
+Pinging 8.8.8.8 with 32 bytes of data:
+Reply from 8.8.8.8: bytes=32 time=2ms TTL=57
+Reply from 8.8.8.8: bytes=32 time=2ms TTL=57
+Reply from 8.8.8.8: bytes=32 time=2ms TTL=57
+Reply from 8.8.8.8: bytes=32 time=2ms TTL=57
 ```
 
 ### Start ec2
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc start-instances](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/start-instances.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment démarré son instance ec2 ?
 
 ```bash
+aws ec2 start-instances --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03 --region eu-central-1
 ```
 ```
-[output]
+{
+    "StartingInstances": [
+        {
+            "InstanceId": "i-0036e5e28eddfcd86",
+            "CurrentState": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PreviousState": {
+                "Code": 80,
+                "Name": "stopped"
+            }
+        }
+    ]
+}
 ```
 
 ### Stop ec2
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc stop-instances](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/stop-instances.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment stoper une instance ?
 
 ```bash
+aws ec2 stop-instances --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03 --region eu-central-1
 ```
 ```
-[output]
+{
+    "StoppingInstances": [
+        {
+            "InstanceId": "i-0036e5e28eddfcd86",
+            "CurrentState": {
+                "Code": 64,
+                "Name": "stopping"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
 ```
 
 ### Terminate ec2
