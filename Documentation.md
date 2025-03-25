@@ -940,9 +940,19 @@ aws ec2 get-password-data --instance-id i-02722195c013be8b5 --priv-launch-key KE
 * comment créer une route qui target le serveur ssh ?
 
 ```bash
+ssh admin@localhost -p 23 -i KEY-I346-SUB-DEVOPSTEAM03.pem
 ```
 ```
-[output]
+Linux ip-10-0-0-10 6.1.0-32-cloud-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.129-1 (2025-03-06) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Mar 23 16:07:46 2025 from 188.155.160.69
+devopsteam03@ip-10-0-0-10:~$
 ```
 
 ### Tester les accès linux outbound
@@ -951,9 +961,16 @@ aws ec2 get-password-data --instance-id i-02722195c013be8b5 --priv-launch-key KE
 * comment créer une route qui target le serveur ssh ?
 
 ```bash
+ping 8.8.8.8
 ```
 ```
-[output]
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=57 time=1.69 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=57 time=2.74 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=57 time=2.31 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=57 time=2.55 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=57 time=1.73 ms
+64 bytes from 8.8.8.8: icmp_seq=6 ttl=57 time=2.41 ms
 ```
 
 ### Tester les accès windows inbound
