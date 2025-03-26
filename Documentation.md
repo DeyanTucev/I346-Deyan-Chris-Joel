@@ -554,11 +554,11 @@ aws ec2 create-route --route-table-id rtb-07bf97cd343c65b4c --destination-cidr-b
 * [lien vers la doc create-tags](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-tags.html)
 
 * comment créer et ajouter un tage à la table de routage?
+
 ```bash
 aws ec2 create-tags --resources rtb-07bf97cd343c65b4c --tags Key=Name,Value=Group03 --profile devopsteam03 --region eu-central-1
 ```
-```
-```
+Aucun résultat dans l'invite de commande
 
 ### Créer un groupe de sécurité sous-réseau
 * [lien vers la doc create-security-group](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/create-security-group.html)
@@ -567,7 +567,6 @@ aws ec2 create-tags --resources rtb-07bf97cd343c65b4c --tags Key=Name,Value=Grou
 
 ```bash
 aws ec2 create-security-group --group-name securgrp-i346-devopsteam03 --description "securgrp-i346-devopsteam03" --profile devopsteam03 --region eu-central-1 --vpc-id vpc-0a22d771f16ae549d
-
 ```
 ```
 {
@@ -581,10 +580,8 @@ aws ec2 create-security-group --group-name securgrp-i346-devopsteam03 --descript
 
 * comment créer une paire de clés ?
 
-```
+```bash
 aws ec2 create-key-pair --key-name KEY-I346-SUB-DEVOPSTEAM03 --key-type rsa --key-format pem --region eu-central-1 --profile devopsteam03 --output text > KEY-I346-SUB-DEVOPSTEAM03.pem  
-```
-```
 ```
 Nous avons obtenu un fichier .pem contenant notre clé privée
 
@@ -1037,30 +1034,40 @@ aws ec2 stop-instances --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03
 ```
 
 ### Terminate ec2
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc terminate-instances](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/terminate-instances.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment éteindre une instance ec2 ?
 
 ```bash
+aws ec2 terminate-instances --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03 --region eu-central-1
 ```
 ```
-[output]
+{
+    "TerminatingInstances": [
+        {
+            "InstanceId": "i-0036e5e28eddfcd86",
+            "CurrentState": {
+                "Code": 32,
+                "Name": "shutting-down"
+            },
+            "PreviousState": {
+                "Code": 16,
+                "Name": "running"
+            }
+        }
+    ]
+}
 ```
 
 ### Nettoyer ce que l'on a fait 
-* [lien vers la doc create-route](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-route.html)
+* [lien vers la doc delete-instance](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/opsworks/delete-instance.html)
 
-* comment créer une route qui target le serveur ssh ?
+* comment supprimer une instance ec2 ?
 
 ```bash
+aws opsworks delete-instance --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03 --region eu-central-1
 ```
-```
-[output]
-```
-
-
-
-
+Aucun résultat dans l'invite de commande
 
 # Liste de question révisions test
 
