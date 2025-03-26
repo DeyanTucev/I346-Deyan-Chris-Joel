@@ -1059,7 +1059,7 @@ aws ec2 terminate-instances --instance-ids i-0036e5e28eddfcd86 --profile devopst
 }
 ```
 
-### Nettoyer ce que l'on a fait 
+### Clean Ec2 
 * [lien vers la doc delete-instance](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/opsworks/delete-instance.html)
 
 * comment supprimer une instance ec2 ?
@@ -1068,6 +1068,38 @@ aws ec2 terminate-instances --instance-ids i-0036e5e28eddfcd86 --profile devopst
 aws opsworks delete-instance --instance-ids i-0036e5e28eddfcd86 --profile devopsteam03 --region eu-central-1
 ```
 Aucun résultat dans l'invite de commande
+
+### Clean key pairs 
+* [lien vers la doc delete-key](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/location/delete-key.html)
+
+* comment supprimer une paire de clés ?
+
+```bash
+aws opsworks delete-key --key-name KEY-I346-SUB-DEVOPSTEAM03.pem --profile devopsteam03 --region eu-central-1
+```
+Aucun résultat dans l'invite de commande
+
+### Clean subnet 
+* [lien vers la doc delete-subnet](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/delete-subnet.html)
+
+* comment supprimer un sous-réseau ?
+
+```bash
+aws ec2 delete-subnet --subnet-id subnet-0aaee76144e27a3dd --profile devopsteam03 --region eu-central-1
+```
+Aucun résultat dans l'invite de commande
+
+### Clean security group 
+* [lien vers la doc delete-security-group](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/delete-security-group.html)
+
+* comment supprimer un groupe de sécurité ?
+
+```bash
+aws ec2 delete-security-group --group-id sg-086f8ce047d5b890b --profile devopsteam03 --region eu-central-1
+```
+```
+true sg-086f8ce047d5b890b
+```
 
 # Liste de question révisions test
 
